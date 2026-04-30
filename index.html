@@ -732,9 +732,21 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      #hero { grid-template-columns: 1fr; }
+      #hero {
+        grid-template-columns: 1fr;
+        padding: 88px 6vw 0 6vw; /* padding simétrico en móvil */
+        justify-items: center;
+      }
       .hero-image { display: none; }
-      .hero-text { align-items: center; text-align: center; max-width: 100%; }
+      .hero-text {
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
+        width: 100%;
+        padding-top: 48px;
+        padding-bottom: 48px;
+      }
+      .hero-eyebrow { text-align: center; }
       .hero-actions { justify-content: center; }
       .sobre-grid { grid-template-columns: 1fr; gap: 48px; }
       .productos-grid { grid-template-columns: 1fr; }
