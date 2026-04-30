@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SwapMart LLC — Infoproductos Digitales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f8f8f9;
+      --bg2: #ffffff;
+      --blue: #1536C8;
+      --blue-light: #2a4ee8;
+      --blue-glow: rgba(21, 54, 200, 0.12);
+      --white: #0d0d0f;
+      --muted: rgba(13,13,15,0.5);
+      --border: rgba(13,13,15,0.08);
+      --font-head: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6vw;
+      height: 68px;
+      background: rgba(248,248,249,0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.4s;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--blue);
+      color: #ffffff !important;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--blue-light) !important; color: var(--white) !important; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 82vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: flex-start;
+      padding: 88px 0 0 6vw;
+      position: relative;
+      overflow: hidden;
+      gap: 0;
+      background: var(--bg);
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      position: relative;
+      z-index: 2;
+      max-width: 580px;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+
+    .hero-image {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      align-self: stretch;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 780px;
+      height: 100%;
+      object-fit: contain;
+      object-position: right bottom;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 50%;
+      left: 55%;
+      transform: translate(-50%, -50%);
+      width: 900px;
+      height: 700px;
+      background: radial-gradient(ellipse at center, rgba(21,54,200,0.13) 0%, rgba(21,54,200,0.06) 40%, transparent 70%);
+      animation: pulse 7s ease-in-out infinite;
+      pointer-events: none;
+      transition: none;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(13,13,15,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(13,13,15,0.055) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse 90% 80% at 65% 40%, black 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 80% at 65% 40%, black 20%, transparent 80%);
+      z-index: 1;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+      50% { opacity: 0.7; transform: translateX(-50%) scale(1.08); }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(21,54,200,0.07);
+      border: 1px solid rgba(21,54,200,0.2);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6b8ef5;
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: #6b8ef5;
+      border-radius: 50%;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+
+    .hero-logo-img {
+      width: 120px;
+      height: auto;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    h1 {
+      font-family: var(--font-head);
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 28px;
+      position: relative;
+      text-wrap: balance;
+    }
+
+    h1 .accent { color: var(--blue); }
+
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 52px;
+      text-wrap: pretty;
+      position: relative;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #ffffff;
+      border: none;
+      padding: 15px 32px;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-light);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 40px rgba(21,54,200,0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+      padding: 15px 32px;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 400;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(247,247,248,0.25);
+      transform: translateY(-1px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, transparent, var(--blue));
+      animation: scrollDown 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollDown {
+      0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+      50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+      100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 160px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* ── SECTIONS SHARED ── */
+    section { position: relative; }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 120px 6vw;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    h2 {
+      font-family: var(--font-head);
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      text-wrap: balance;
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── SOBRE NOSOTROS ── */
+    #sobre {
+      background: var(--bg2);
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .sobre-text p {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 20px;
+      text-wrap: pretty;
+    }
+
+    .sobre-text p strong { color: var(--white); font-weight: 500; }
+
+    .sobre-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .stat-card {
+      background: rgba(13,13,15,0.02);
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+      transition: background 0.3s;
+    }
+
+    .stat-card:first-child { border-radius: 12px 0 0 0; }
+    .stat-card:nth-child(2) { border-radius: 0 12px 0 0; }
+    .stat-card:nth-child(3) { border-radius: 0 0 0 12px; }
+    .stat-card:last-child { border-radius: 0 0 12px 0; }
+
+    .stat-card:hover { background: rgba(21,54,200,0.05); }
+
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-num span { color: var(--blue); }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    /* ── SERVICIOS ── */
+    #servicios {
+      background: var(--bg);
+    }
+
+    .servicios-header {
+      max-width: 600px;
+      margin-bottom: 72px;
+    }
+
+    .servicios-header p {
+      font-size: 17px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .producto-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(13,13,15,0.04);
+      border-radius: 16px;
+      padding: 0;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .producto-card-img {
+      width: 100%;
+      padding: 36px 36px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .producto-card-img img {
+      width: 100%;
+      height: 260px;
+      object-fit: contain;
+    }
+
+    .producto-card-body {
+      padding: 28px 32px 36px;
+    }
+
+    .producto-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .producto-card:hover {
+      border-color: rgba(21,54,200,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(21,54,200,0.08);
+    }
+
+    .producto-card:hover::before { transform: scaleX(1); }
+
+    .producto-icon {
+      width: 48px; height: 48px;
+      background: rgba(21,54,200,0.08);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .producto-icon svg { width: 22px; height: 22px; stroke: #6b8ef5; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    .producto-card h3 {
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .producto-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .producto-badge {
+      margin-top: 24px;
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b8ef5;
+      border: 1px solid rgba(21,54,200,0.3);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    /* ── POR QUÉ ── */
+    #porque {
+      background: var(--bg2);
+    }
+
+    .porque-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 64px;
+    }
+
+    .porque-item {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(13,13,15,0.04);
+      border-radius: 16px;
+      transition: border-color 0.3s;
+      overflow: hidden;
+    }
+
+    .porque-item:hover { border-color: rgba(21,54,200,0.3); }
+
+    .porque-item-img {
+      width: 100%;
+      padding: 20px 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .porque-item-img img {
+      width: 90%;
+      height: 180px;
+      object-fit: contain;
+    }
+
+    .porque-item-body {
+      padding: 16px 20px 22px;
+      display: flex;
+      gap: 14px;
+    }
+
+    .porque-content h3 {
+      font-family: var(--font-head);
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .porque-content p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    .porque-num {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+      flex-shrink: 0;
+      width: 28px;
+    }
+
+    .porque-content h3 {
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .porque-content p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── CONTACTO ── */
+    #contacto {
+      background: var(--bg);
+    }
+
+    .contacto-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 72px 6vw 80px;
+    }
+
+    .contacto-inner h2 { margin-bottom: 12px; }
+
+    .contacto-inner p {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 28px;
+      font-weight: 300;
+    }
+
+    .contacto-img {
+      width: 100%;
+      max-width: 240px;
+      height: auto;
+      object-fit: contain;
+      margin: 0 auto 28px;
+      display: block;
+    }
+
+    .contact-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 16px rgba(13,13,15,0.06);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: border-color 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contact-card:hover { border-color: rgba(21,54,200,0.4); }
+
+    .contact-icon {
+      width: 48px; height: 48px;
+      background: rgba(21,54,200,0.08);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg { width: 20px; height: 20px; stroke: #6b8ef5; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    .contact-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .contact-value {
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo img { height: 28px; width: auto; opacity: 0.6; }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-image { display: none; }
+      .hero-text { align-items: center; text-align: center; max-width: 100%; }
+      .hero-actions { justify-content: center; }
+      .sobre-grid { grid-template-columns: 1fr; gap: 48px; }
+      .productos-grid { grid-template-columns: 1fr; }
+      .porque-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 540px) {
+      .sobre-stat-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">
+      <img src="uploads/SWAPART.png" alt="SwapMart LLC" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Nosotros</a></li>
+      <li><a href="#servicios">Productos</a></li>
+      <li><a href="#porque">Ventajas</a></li>
+      <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="hero-glow"></div>
+      <div class="hero-grid"></div>
+    </div>
+
+    <div class="hero-text">
+      <span class="hero-eyebrow reveal">SwapMart LLC · Infoproductos Digitales</span>
+      <h1 class="reveal reveal-delay-1">
+        Herramientas digitales<br />que <span class="accent">funcionan</span>.
+      </h1>
+      <p class="hero-sub reveal reveal-delay-2">
+        Construimos soluciones prácticas para el mercado hispanohablante. Un problema real, un producto concreto, un solo pago.
+      </p>
+      <div class="hero-actions reveal reveal-delay-3">
+        <a href="#servicios" class="btn-primary">
+          Ver productos
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+        <a href="#contacto" class="btn-secondary">Contactarnos</a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="uploads/sin fondo hero.png" alt="SwapMart herramientas digitales" width="720" height="560" />
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SOBRE NOSOTROS -->
+  <section id="sobre">
+    <div class="section-inner">
+      <div class="sobre-grid">
+        <div class="sobre-text">
+          <span class="section-label reveal">Sobre nosotros</span>
+          <h2 class="reveal">Un estudio enfocado en <span style="color:var(--blue)">resultados reales</span></h2>
+          <p class="reveal reveal-delay-1">
+            En SwapMart LLC creemos que la tecnología digital debe ser <strong>accesible, directa y honesta</strong>. Por eso diseñamos cada producto pensando en quién lo va a usar y en el problema concreto que necesita resolver.
+          </p>
+          <p class="reveal reveal-delay-2">
+            Sin suscripciones, sin cargos ocultos, sin complejidad innecesaria. Cada herramienta que construimos es un pago único — porque el valor tiene que estar en el producto, no en un modelo de retención.
+          </p>
+        </div>
+        <div class="sobre-stat-grid">
+          <div class="stat-card reveal">
+            <div class="stat-num">100<span>%</span></div>
+            <div class="stat-label">Pago único, sin suscripciones</div>
+          </div>
+          <div class="stat-card reveal reveal-delay-1">
+            <div class="stat-num"><span>#</span>1</div>
+            <div class="stat-label">Enfoque en mercado hispanohablante</div>
+          </div>
+          <div class="stat-card reveal reveal-delay-2">
+            <div class="stat-num">0<span>$</span></div>
+            <div class="stat-label">Costos ocultos o cargos recurrentes</div>
+          </div>
+          <div class="stat-card reveal reveal-delay-3">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Acceso de por vida a tus productos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SERVICIOS / PRODUCTOS -->
+  <section id="servicios">
+    <div class="section-inner">
+      <div class="servicios-header">
+        <span class="section-label reveal">Nuestros productos</span>
+        <h2 class="reveal">Soluciones digitales con propósito</h2>
+        <p class="reveal reveal-delay-1">Cada producto de SwapMart LLC nace de un problema real del mercado hispanohablante. Los construimos para durar.</p>
+      </div>
+      <div class="productos-grid">
+
+        <div class="producto-card reveal">
+          <div class="producto-card-img">
+            <img src="uploads/Productos sin fondo-b968ad38.png" alt="Plantillas y Sistemas" width="400" height="210" loading="lazy" />
+          </div>
+          <div class="producto-card-body">
+            <h3>Plantillas & Sistemas</h3>
+            <p>Estructuras listas para usar que ahorran horas de trabajo. Diseñadas para procesos del día a día en negocios hispanohablantes.</p>
+            <span class="producto-badge">Pago único</span>
+          </div>
+        </div>
+
+        <div class="producto-card reveal reveal-delay-1">
+          <div class="producto-card-img">
+            <img src="uploads/cursos sin fondo.png" alt="Cursos y Guías Digitales" width="400" height="210" loading="lazy" />
+          </div>
+          <div class="producto-card-body">
+            <h3>Cursos & Guías Digitales</h3>
+            <p>Conocimiento práctico empaquetado en formato claro y directo. Sin relleno, sin horas perdidas — solo lo que necesitas saber.</p>
+            <span class="producto-badge">Pago único</span>
+          </div>
+        </div>
+
+        <div class="producto-card reveal reveal-delay-2">
+          <div class="producto-card-img">
+            <img src="uploads/Productos digitales sin fondo.png" alt="Herramientas y Software" width="400" height="210" loading="lazy" />
+          </div>
+          <div class="producto-card-body">
+            <h3>Herramientas & Software</h3>
+            <p>Aplicaciones ligeras que automatizan tareas concretas. Construidas para resolver un problema específico, sin curva de aprendizaje.</p>
+            <span class="producto-badge">Pago único</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- POR QUÉ ELEGIRNOS -->
+  <section id="porque">
+    <div class="section-inner">
+      <span class="section-label reveal">¿Por qué SwapMart?</span>
+      <h2 class="reveal" style="max-width:520px">Lo que nos hace <span style="color:var(--blue)">diferentes</span></h2>
+      <div class="porque-grid">
+        <div class="porque-item reveal">
+          <div class="porque-item-img">
+            <img src="uploads/Simplicidad sin fondo.png" alt="Diseñado para hispanohablantes" width="400" height="170" loading="lazy" />
+          </div>
+          <div class="porque-item-body">
+            <span class="porque-num">01</span>
+            <div class="porque-content">
+              <h3>Diseñado para hispanohablantes</h3>
+              <p>No adaptamos contenido extranjero. Todo nace pensando en la realidad del mercado de habla hispana: sus contextos, sus retos y su forma de trabajar.</p>
+            </div>
+          </div>
+        </div>
+        <div class="porque-item reveal reveal-delay-1">
+          <div class="porque-item-img">
+            <img src="uploads/Rapidez Sin fondo.png" alt="Sin suscripciones" width="400" height="170" loading="lazy" />
+          </div>
+          <div class="porque-item-body">
+            <span class="porque-num">02</span>
+            <div class="porque-content">
+              <h3>Sin suscripciones</h3>
+              <p>Pagás una vez y el producto es tuyo para siempre. Creemos en modelos justos donde el cliente no quede atado a un cargo mensual indefinido.</p>
+            </div>
+          </div>
+        </div>
+        <div class="porque-item reveal reveal-delay-2">
+          <div class="porque-item-img">
+            <img src="uploads/Enfoque practico sin fondo.png" alt="Foco en un problema real" width="400" height="170" loading="lazy" />
+          </div>
+          <div class="porque-item-body">
+            <span class="porque-num">03</span>
+            <div class="porque-content">
+              <h3>Foco en un problema real</h3>
+              <p>Cada producto ataca un problema específico. Nada genérico, nada inflado. Si no resuelve algo concreto, no lo lanzamos.</p>
+            </div>
+          </div>
+        </div>
+        <div class="porque-item reveal reveal-delay-3">
+          <div class="porque-item-img">
+            <img src="uploads/calidad de estudio sin fondo.png" alt="Calidad de estudio" width="400" height="210" loading="lazy" />
+          </div>
+          <div class="porque-item-body">
+            <span class="porque-num">04</span>
+            <div class="porque-content">
+              <h3>Calidad de estudio</h3>
+              <p>Somos un equipo pequeño y eso se nota en los detalles. Cada entrega pasa por un estándar alto antes de llegar a tus manos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="contacto-inner">
+      <span class="section-label reveal">Contacto</span>
+      <h2 class="reveal">¿Hablamos?</h2>
+      <p class="reveal reveal-delay-1">Estamos disponibles para responder preguntas sobre nuestros productos, colaboraciones o cualquier otra consulta.</p>
+      <img src="uploads/CTA sin fondo.png" alt="SwapMart" class="contacto-img reveal reveal-delay-2" width="280" height="220" loading="lazy" />
+      <a href="mailto:contact@swapmartllc.com" class="contact-card reveal reveal-delay-3">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">contact@swapmartllc.com</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="uploads/SWAPART.png" alt="SwapMart LLC" />
+    </div>
+    <p class="footer-copy">© 2026 SwapMart LLC. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Mouse-following glow
+    const glow = document.querySelector('.hero-glow');
+    const hero = document.querySelector('#hero');
+    let glowX = 65, glowY = 45;
+    let targetX = 65, targetY = 45;
+
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      targetX = ((e.clientX - rect.left) / rect.width) * 100;
+      targetY = ((e.clientY - rect.top) / rect.height) * 100;
+    });
+
+    function animateGlow() {
+      glowX += (targetX - glowX) * 0.04;
+      glowY += (targetY - glowY) * 0.04;
+      glow.style.left = glowX + '%';
+      glow.style.top = glowY + '%';
+      requestAnimationFrame(animateGlow);
+    }
+    animateGlow();
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Hero elements fire immediately
+    document.querySelectorAll('#hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), 200 + i * 120);
+    });
+
+    // Nav background on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.background = window.scrollY > 40
+        ? 'rgba(248,248,249,0.97)'
+        : 'rgba(248,248,249,0.85)';
+    });
+  </script>
+</body>
+</html>
